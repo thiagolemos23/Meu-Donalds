@@ -15,7 +15,7 @@ import { CartContext } from "../../contexts/cart";
 interface ProductDetailsProps {
   product: Prisma.ProductGetPayload<{
     include: {
-      restaurant: {
+      restaurants: {
         select: {
           name: true;
           avatarImageUrl: true;
@@ -53,14 +53,14 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
           {/* RESTAURANTE */}
           <div className="flex items-center gap-1.5">
             <Image
-              src={product.restaurant.avatarImageUrl}
-              alt={product.restaurant.name}
+              src={product.restaurants.avatarImageUrl}
+              alt={product.restaurants.name}
               width={16}
               height={16}
               className="rounded-full"
             />
             <p className="text-xs text-muted-foreground">
-              {product.restaurant.name}
+              {product.restaurants.name}
             </p>
           </div>
 
