@@ -14,7 +14,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
   const product = await db.product.findUnique({
     where: { id: productId },
     include: {
-      restaurants: {
+      restaurant: {
         select: {
           name: true,
           avatarImageUrl: true,
@@ -26,7 +26,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
   if (!product) {
     return notFound();
   }
-  if (product.restaurants.slug.toUpperCase() !== slug.toUpperCase()) {
+  if (product.restaurant.slug.toUpperCase() !== slug.toUpperCase()) {
     return notFound();
   }
   return (
